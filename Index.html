@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>I Love U</title>
+    <title>I Love You</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff4b5c, #ff758c);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: white;
+            font-size: 50px;
+            text-align: center;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px white, 0 0 20px white;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 40px #ffccd5;
+            }
+        }
+    </style>
 </head>
 
-<body style="text-align:center; font-size:30px; background:black; color:white;">
+<body>
 
-<h1 id="text"></h1>
-
-<script>
-let count = 300;
-let text = "";
-
-for(let i=0; i<count; i++){
-    text += "I love u Aroosha ❤️<br>";
-}
-
-document.getElementById("text").innerHTML = text;
-</script>
+    <h1>I LOVE YOU AROOSHA ❤️</h1>
 
 </body>
 </html>
