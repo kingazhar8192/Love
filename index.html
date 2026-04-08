@@ -9,16 +9,16 @@ body {
   margin: 0;
   overflow: hidden;
   font-family: Arial;
-  background: black;
+  background: linear-gradient(to right, #000000, #1a001a);
   color: white;
   text-align: center;
 }
 
-/* Background hearts */
+/* Floating hearts */
 .heart {
   position: absolute;
-  color: red;
-  animation: float 5s linear infinite;
+  color: #ff4d6d;
+  animation: float 6s linear infinite;
 }
 
 @keyframes float {
@@ -26,7 +26,7 @@ body {
   100% {transform: translateY(-10vh); opacity: 0;}
 }
 
-/* Main content */
+/* Center content */
 .container {
   position: absolute;
   top: 50%;
@@ -35,9 +35,15 @@ body {
 }
 
 h1 {
-  font-size: 45px;
+  font-size: 50px;
   color: #ff4d6d;
-  text-shadow: 0 0 20px #ff4d6d;
+  text-shadow: 0 0 25px #ff4d6d;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from {text-shadow: 0 0 10px #ff4d6d;}
+  to {text-shadow: 0 0 30px #ff1a4d;}
 }
 
 button {
@@ -49,12 +55,33 @@ button {
   font-size: 18px;
   cursor: pointer;
   margin-top: 20px;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #ff4d6d;
 }
 
 #text {
   margin-top: 20px;
-  font-size: 22px;
-  min-height: 30px;
+  font-size: 24px;
+  min-height: 40px;
+}
+
+/* Confetti dots */
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  0% {transform: translateY(-10vh);}
+  100% {transform: translateY(110vh);}
 }
 </style>
 </head>
@@ -70,7 +97,7 @@ button {
 <audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
 <script>
-// Floating hearts
+// Hearts animation
 setInterval(() => {
   let heart = document.createElement("div");
   heart.className = "heart";
@@ -78,16 +105,33 @@ setInterval(() => {
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = (20 + Math.random()*30) + "px";
   document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 250);
 
-  setTimeout(() => heart.remove(), 5000);
-}, 300);
+// Confetti effect
+function confetti() {
+  for (let i = 0; i < 30; i++) {
+    let dot = document.createElement("div");
+    dot.className = "dot";
+    dot.style.left = Math.random() * 100 + "vw";
+    dot.style.background = ["#ff4d6d","#ffffff","#ff99aa"][Math.floor(Math.random()*3)];
+    document.body.appendChild(dot);
+    setTimeout(() => dot.remove(), 3000);
+  }
+}
 
 // Typing effect
-let msg = "You are the most special person in my life 💕";
+let msg = "You are my life, my love, my everything Aroosha 💕";
 let i = 0;
 
 function startLove() {
   document.getElementById("music").play();
+  document.getElementById("text").innerHTML = "";
+  i = 0;
+
+  confetti(); // 🎆 effect
+
+  alert("Aroosha ❤️ You are my everything 😘");
 
   let interval = setInterval(() => {
     if (i < msg.length) {
