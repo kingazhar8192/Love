@@ -2,146 +2,173 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Aroosha ❤️</title>
+<title>For Maira ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  overflow: hidden;
-  font-family: Arial;
-  background: linear-gradient(to right, #000000, #1a001a);
-  color: white;
-  text-align: center;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+
+body{
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  background: radial-gradient(circle at top, #ff4d6d, #6a11cb, #2575fc);
+  background-size:400% 400%;
+  animation:bg 10s ease infinite;
 }
 
-/* Floating hearts */
-.heart {
-  position: absolute;
-  color: #ff4d6d;
-  animation: float 6s linear infinite;
+@keyframes bg{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-@keyframes float {
-  0% {transform: translateY(100vh); opacity: 1;}
-  100% {transform: translateY(-10vh); opacity: 0;}
+/* floating particles */
+.particle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:white;
+  border-radius:50%;
+  animation:floatUp 8s linear infinite;
+  opacity:0.6;
 }
 
-/* Center content */
-.container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+@keyframes floatUp{
+  0%{transform:translateY(100vh) scale(0);}
+  100%{transform:translateY(-10vh) scale(1);}
 }
 
-h1 {
-  font-size: 50px;
-  color: #ff4d6d;
-  text-shadow: 0 0 25px #ff4d6d;
-  animation: glow 2s infinite alternate;
+.card{
+  width:90%;
+  max-width:680px;
+  padding:55px;
+  text-align:center;
+  border-radius:35px;
+  background:rgba(255,255,255,0.10);
+  backdrop-filter:blur(25px);
+  box-shadow:0 30px 90px rgba(0,0,0,0.4);
+  animation:pop 1.2s ease;
 }
 
-@keyframes glow {
-  from {text-shadow: 0 0 10px #ff4d6d;}
-  to {text-shadow: 0 0 30px #ff1a4d;}
+@keyframes pop{
+  from{transform:scale(0.7);opacity:0;}
+  to{transform:scale(1);opacity:1;}
 }
 
-button {
-  padding: 15px 30px;
-  border-radius: 30px;
-  border: none;
-  background: #ff4d6d;
-  color: white;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: 0.3s;
+h1{
+  font-size:40px;
+  margin-bottom:10px;
+  text-shadow:0 0 20px rgba(255,255,255,0.4);
 }
 
-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #ff4d6d;
+#type{
+  font-size:18px;
+  min-height:30px;
+  margin-bottom:15px;
+  opacity:0.95;
 }
 
-#text {
-  margin-top: 20px;
-  font-size: 24px;
-  min-height: 40px;
+p{
+  font-size:16px;
+  margin:6px 0;
+  opacity:0.9;
 }
 
-/* Confetti dots */
-.dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: white;
-  border-radius: 50%;
-  animation: fall 3s linear infinite;
+.highlight{
+  font-weight:600;
+  margin-top:12px;
+  font-size:17px;
+  text-shadow:0 0 10px rgba(255,255,255,0.2);
 }
 
-@keyframes fall {
-  0% {transform: translateY(-10vh);}
-  100% {transform: translateY(110vh);}
+/* floating hearts */
+.heart{
+  position:absolute;
+  color:white;
+  font-size:16px;
+  animation:heart 6s linear infinite;
+}
+
+@keyframes heart{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
+}
+
+/* glow line */
+.line{
+  width:60%;
+  height:2px;
+  background:white;
+  margin:15px auto;
+  opacity:0.4;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>I LOVE YOU AROOSHA ❤️</h1>
-  <button onclick="startLove()">Click Me 💖</button>
-  <div id="text"></div>
+<div class="card">
+
+  <h1>❤️ For My Universe Maira ❤️</h1>
+
+  <div id="type"></div>
+
+  <div class="line"></div>
+
+  <p>Maira, you are my peace in every chaos ✨</p>
+  <p>You are my smile in every sadness 💖</p>
+  <p>You are my reason to keep going ❤️</p>
+
+  <p class="highlight">I don’t need the world… I just need you, Maira 💍</p>
+
+  <p class="highlight">Forever yours ❤️</p>
+
 </div>
 
-<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-
 <script>
-// Hearts animation
-setInterval(() => {
-  let heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (20 + Math.random()*30) + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
-}, 250);
 
-// Confetti effect
-function confetti() {
-  for (let i = 0; i < 30; i++) {
-    let dot = document.createElement("div");
-    dot.className = "dot";
-    dot.style.left = Math.random() * 100 + "vw";
-    dot.style.background = ["#ff4d6d","#ffffff","#ff99aa"][Math.floor(Math.random()*3)];
-    document.body.appendChild(dot);
-    setTimeout(() => dot.remove(), 3000);
-  }
-}
-
-// Typing effect
-let msg = "You are my life, my love, my everything Aroosha 💕";
+// typing effect
+let text = "Maira, you are not just special… you are my whole universe ❤️";
 let i = 0;
 
-function startLove() {
-  document.getElementById("music").play();
-  document.getElementById("text").innerHTML = "";
-  i = 0;
-
-  confetti(); // 🎆 effect
-
-  alert("Aroosha ❤️ You are my everything 😘");
-
-  let interval = setInterval(() => {
-    if (i < msg.length) {
-      document.getElementById("text").innerHTML += msg.charAt(i);
-      i++;
-    } else {
-      clearInterval(interval);
-    }
-  }, 50);
+function typeWriter(){
+  if(i < text.length){
+    document.getElementById("type").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter,40);
+  }
 }
+typeWriter();
+
+// hearts
+function hearts(){
+  const h=document.createElement("div");
+  h.classList.add("heart");
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=Math.random()*22+10+"px";
+  h.style.animationDuration=Math.random()*3+3+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}
+setInterval(hearts,100);
+
+// particles
+function particles(){
+  const p=document.createElement("div");
+  p.classList.add("particle");
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=Math.random()*5+5+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),8000);
+}
+setInterval(particles,200);
+
 </script>
 
 </body>
